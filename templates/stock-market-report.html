@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF=8">
+    <title>Stock Market Predictor Service</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+
+<script type="text/javascript">
+  window.MemberfulOptions = {site: "https://olaff1313.memberful.com"};
+
+  (function() {
+    var s   = document.createElement('script');
+
+    s.type  = 'text/javascript';
+    s.async = true;
+    s.src   = 'https://d35xxde4fgg0cx.cloudfront.net/assets/embedded.js';
+
+    setup = function() { window.MemberfulEmbedded.setup(); }
+
+    s.addEventListener("load", setup, false);
+
+    ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+  })();
+</script>
+
+
+<body style = "background-color: black; padding-top: 10px; ">
+      <div class="container">
+        <div class="navbar-header">
+          <table cellpadding ="5" style="width:700px; background-color:white;">
+            <tr>
+              <td>
+                   <img src="static/images/forecast-chart.png" alt="Hi!" height="79" width="215">
+              </td>
+              <td>
+                  <H2><p style="text-align:center">STOCK MARKET PREDICTOR</p></H2>
+              </td>
+               <td>
+                 <img src="static/images/forecast-chart.png" alt="Welcome!" height="79" width="215">
+
+              </td>
+            </tr>
+        </div>
+      </div>
+
+
+     <div class="container">
+
+      <table border=0 cellpadding="10" style="width: 700px; background-color:lightgrey;">
+        <tr>
+          <td colspan='2'><label>Select the stock you would like to forecast:</label>
+            <FORM id='submit_content' method="POST" action="{{ url_for('get_financial_information') }}">
+              <SELECT class="selectpicker" name="selected_stock" onchange="this.form.submit()">
+                  <option value="{{selected_stock}}" selected>{{selected_stock}}</option>
+               {% for stock in options_stocks %}
+                   <option>{{stock}}</option>
+               {% endfor %}
+            </SELECT>
+            </FORM>
+          </td>
+        </tr>
+        <tr>
+          <td>{{chart_plot}}</td>
+          <td>
+              {{fundamentals_company_name}}
+              {{fundamentals_sector}}
+              {{fundamentals_industry}}
+              {{fundamentals_marketcap}}
+              {{fundamentals_exchange}}
+          {{wiki}}</td>
+        </tr>
+        <tr><td>
+        <a href="https://olaff1313.memberful.com/auth/sign_out" class="btn btn-primary block">Log out</a>
+            <a href="https://olaff1313.memberful.com/account" class="btn btn-success block">Account info</a>
+    </td></tr>
+      </table>
+    </div>
+</body>
+</html>
