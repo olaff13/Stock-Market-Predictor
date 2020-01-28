@@ -1,2 +1,2 @@
 Flask==1.1.1
-Tensorflow==1.15
+Tensorflow==1.15.2
